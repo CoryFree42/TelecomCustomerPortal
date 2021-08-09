@@ -1,10 +1,10 @@
-create table user(
-    userID int not null auto_increment,
-    firstName varchar(45) not null,
-    lastName varchar(45) not null,
-    email varchar(45) not null,
-    password varchar(45) not null,
-    primary key (`userID`)
+CREATE TABLE users(
+    userID INT NOT NULL AUTO_INCREMENT,
+    firstName VARCHAR(45) NOT NULL,
+    lastName VARCHAR(45) NOT NULL,
+    email VARCHAR(45) NOT NULL,
+    password VARCHAR(45) NOT NULL,
+    PRIMARY KEY (`userID`)
 );
 
 CREATE TABLE devices (
