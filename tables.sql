@@ -4,7 +4,7 @@ create table user(
     lastName varchar(45) not null,
     email varchar(45) not null,
     password varchar(45) not null,
-    primary key (userID)
+    primary key (`userID`)
 );
 
 CREATE TABLE devices (
