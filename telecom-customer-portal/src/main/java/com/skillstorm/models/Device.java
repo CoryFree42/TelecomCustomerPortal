@@ -2,9 +2,12 @@ package com.skillstorm.models;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
@@ -31,6 +34,21 @@ public class Device {
 	@Column(name="deviceDescription")
 	@NotBlank
 	String deviceDescription;
+	
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="userID")
+	private User user;
+	
+	public Device(String phoneNumber, @NotBlank int userID, @NotBlank int dataPlanID, @NotBlank String deviceName,
+			@NotBlank String deviceDescription, User user) {
+		super();
+		this.phoneNumber = phoneNumber;
+		this.userID = userID;
+		this.dataPlanID = dataPlanID;
+		this.deviceName = deviceName;
+		this.deviceDescription = deviceDescription;
+		this.user = user;
+	}
 
 	public String getPhoneNumber() {
 		return phoneNumber;
@@ -70,6 +88,15 @@ public class Device {
 
 	public void setDeviceDescription(String deviceDescription) {
 		this.deviceDescription = deviceDescription;
+	}
+	
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 	@Override
