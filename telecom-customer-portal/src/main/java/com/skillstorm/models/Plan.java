@@ -1,10 +1,13 @@
 package com.skillstorm.models;
 
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
@@ -31,6 +34,25 @@ public class Plan{
 	@Column(name="costPerDevice")
 	@NotBlank
 	double costPerDevice;
+	
+	@OneToMany(mappedBy="plan")
+	private Set<Device> devices;
+	
+	
+
+	public Plan() {
+		super();
+	}
+
+	public Plan(int dataPlanID, @NotBlank int numberOfDevices, @NotBlank String planDescription,
+			@NotBlank double costPerDevice, Set<Device> devices) {
+		super();
+		this.dataPlanID = dataPlanID;
+		this.numberOfDevices = numberOfDevices;
+		this.planDescription = planDescription;
+		this.costPerDevice = costPerDevice;
+		this.devices = devices;
+	}
 
 	public int getDataPlanID() {
 		return dataPlanID;
@@ -62,6 +84,14 @@ public class Plan{
 
 	public void setCostPerDevice(double costPerDevice) {
 		this.costPerDevice = costPerDevice;
+	}
+
+	public Set<Device> getDevices() {
+		return devices;
+	}
+
+	public void setDevices(Set<Device> devices) {
+		this.devices = devices;
 	}
 
 	@Override

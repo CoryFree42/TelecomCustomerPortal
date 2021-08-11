@@ -39,8 +39,16 @@ public class Device {
 	@JoinColumn(name="userID")
 	private User user;
 	
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="dataPlanID")
+	private Plan plan;
+
+	public Device() {
+		super();
+	}
+
 	public Device(String phoneNumber, @NotBlank int userID, @NotBlank int dataPlanID, @NotBlank String deviceName,
-			@NotBlank String deviceDescription, User user) {
+			@NotBlank String deviceDescription, User user, Plan plan) {
 		super();
 		this.phoneNumber = phoneNumber;
 		this.userID = userID;
@@ -48,6 +56,7 @@ public class Device {
 		this.deviceName = deviceName;
 		this.deviceDescription = deviceDescription;
 		this.user = user;
+		this.plan = plan;
 	}
 
 	public String getPhoneNumber() {
@@ -97,6 +106,14 @@ public class Device {
 
 	public void setUser(User user) {
 		this.user = user;
+	}
+
+	public Plan getPlan() {
+		return plan;
+	}
+
+	public void setPlan(Plan plan) {
+		this.plan = plan;
 	}
 
 	@Override
