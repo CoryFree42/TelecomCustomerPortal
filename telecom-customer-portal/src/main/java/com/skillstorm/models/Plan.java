@@ -6,6 +6,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+
+import org.hibernate.annotations.ColumnDefault;
 
 @Entity
 @Table(name = "data_plans")
@@ -17,12 +20,16 @@ public class Plan{
 	int dataPlanID;
 	
 	@Column(name="numberOfDevices")
+	@NotBlank
+	@ColumnDefault("0")
 	int numberOfDevices;
 	
 	@Column(name="planDescription")
+	@NotBlank
 	String planDescription;
 	
 	@Column(name="costPerDevice")
+	@NotBlank
 	double costPerDevice;
 
 	public int getDataPlanID() {
