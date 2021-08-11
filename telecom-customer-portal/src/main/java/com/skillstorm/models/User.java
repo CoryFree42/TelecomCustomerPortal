@@ -20,9 +20,11 @@ public class User {
 	private int userID;
 	
 	@Column(name="firstName")
+	@NotBlank
 	private String firstName;
 	
 	@Column(name="lastName")
+	@NotBlank
 	private String lastName;
 	
 	@Column(name="email")
