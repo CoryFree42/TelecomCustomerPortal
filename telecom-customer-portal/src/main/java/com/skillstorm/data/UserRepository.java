@@ -8,6 +8,6 @@ import com.skillstorm.models.User;
 @Repository
 public interface UserRepository extends JpaRepository<User, Integer>{
 
-	//CRUD methods
+	//additional CRUD methods
 	
 }

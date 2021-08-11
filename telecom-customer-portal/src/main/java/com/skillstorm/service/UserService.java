@@ -41,4 +41,8 @@ public class UserService {
 		return optional.isPresent()? optional.get() : null;
 	}
 	
+	public void deleteById(Integer id) {
+		repository.deleteById(id);
+	}
+	
 }
