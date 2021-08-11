@@ -1,10 +1,9 @@
 package com.skillstorm.models;
 
-import javax.persistence.Column;
+import javax.persistence.Column; 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
+
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -17,47 +16,37 @@ public class Device {
 	
 	@Id //primary key
 	@Column(name="phoneNumber")
-	String phoneNumber;
-	
-	@Column(name="userID")
-	@NotBlank
-	int userID;
-	
-	@Column(name="dataPlanID")
-	@NotBlank
-	int dataPlanID;
+	private String phoneNumber;
 	
 	@Column(name="deviceName")
 	@NotBlank
-	String deviceName;
+	private String deviceName;
 	
 	@Column(name="deviceDescription")
 	@NotBlank
-	String deviceDescription;
+	private String deviceDescription;
 	
 	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="userID")
-	private User user;
+    @JoinColumn(name="userID")
+    private User user;
 	
 	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="dataPlanID")
-	private Plan plan;
+    @JoinColumn(name="dataPlanID")
+    private Plan plan;
 
 	public Device() {
 		super();
 	}
-
-	public Device(String phoneNumber, @NotBlank int userID, @NotBlank int dataPlanID, @NotBlank String deviceName,
-			@NotBlank String deviceDescription, User user, Plan plan) {
-		super();
-		this.phoneNumber = phoneNumber;
-		this.userID = userID;
-		this.dataPlanID = dataPlanID;
-		this.deviceName = deviceName;
-		this.deviceDescription = deviceDescription;
-		this.user = user;
-		this.plan = plan;
-	}
+	
+	public Device(String phoneNumber, @NotBlank String deviceName,
+            @NotBlank String deviceDescription, User user, Plan plan) {
+        super();
+        this.phoneNumber = phoneNumber;
+        this.deviceName = deviceName;
+        this.deviceDescription = deviceDescription;
+        this.user = user;
+        this.plan = plan;
+    }
 
 	public String getPhoneNumber() {
 		return phoneNumber;
@@ -65,22 +54,6 @@ public class Device {
 
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
-	}
-
-	public int getUserID() {
-		return userID;
-	}
-
-	public void setUserID(int userID) {
-		this.userID = userID;
-	}
-
-	public int getDataPlanID() {
-		return dataPlanID;
-	}
-
-	public void setDataPlanID(int dataPlanID) {
-		this.dataPlanID = dataPlanID;
 	}
 
 	public String getDeviceName() {
@@ -99,12 +72,11 @@ public class Device {
 		this.deviceDescription = deviceDescription;
 	}
 	
-
 	public User getUser() {
 		return user;
 	}
 
-	public void setUser(User user) {
+	public void setUserID(User user) {
 		this.user = user;
 	}
 
@@ -112,15 +84,14 @@ public class Device {
 		return plan;
 	}
 
-	public void setPlan(Plan plan) {
+	public void setDataPlanID(Plan plan) {
 		this.plan = plan;
 	}
 
 	@Override
-	public String toString() {
-		return "Device [phoneNumber=" + phoneNumber + ", userID=" + userID + ", dataPlanID=" + dataPlanID
-				+ ", deviceName=" + deviceName + ", deviceDescription=" + deviceDescription + "]";
-	}
-	
+    public String toString() {
+        return "Device [phoneNumber=" + phoneNumber
+                + ", deviceName=" + deviceName + ", deviceDescription=" + deviceDescription + "]";
+    }
 	
 }

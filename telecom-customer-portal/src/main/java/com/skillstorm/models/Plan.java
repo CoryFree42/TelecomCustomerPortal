@@ -13,6 +13,8 @@ import javax.validation.constraints.NotBlank;
 
 import org.hibernate.annotations.ColumnDefault;
 
+import com.sun.istack.NotNull;
+
 @Entity
 @Table(name = "data_plans")
 public class Plan{
@@ -23,7 +25,7 @@ public class Plan{
 	int dataPlanID;
 	
 	@Column(name="numberOfDevices")
-	@NotBlank
+	@NotNull
 	@ColumnDefault("0")
 	int numberOfDevices;
 	
@@ -32,7 +34,7 @@ public class Plan{
 	String planDescription;
 	
 	@Column(name="costPerDevice")
-	@NotBlank
+	@NotNull
 	double costPerDevice;
 	
 	@OneToMany(mappedBy="plan")
@@ -44,8 +46,8 @@ public class Plan{
 		super();
 	}
 
-	public Plan(int dataPlanID, @NotBlank int numberOfDevices, @NotBlank String planDescription,
-			@NotBlank double costPerDevice, Set<Device> devices) {
+	public Plan(int dataPlanID, @NotNull int numberOfDevices, @NotBlank String planDescription,
+			@NotNull double costPerDevice, Set<Device> devices) {
 		super();
 		this.dataPlanID = dataPlanID;
 		this.numberOfDevices = numberOfDevices;
