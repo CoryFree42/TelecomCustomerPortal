@@ -13,7 +13,10 @@ import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+@JsonIgnoreProperties({"hibernateLazyInitializer"})
 @Entity
 @Table(name = "users")
 public class User {
@@ -40,7 +43,8 @@ public class User {
 	@NotBlank
 	private String password;
 	
-	@OneToMany(mappedBy="user", cascade=CascadeType.ALL)
+	@JsonIgnore
+	@OneToMany(mappedBy="user", cascade=CascadeType.ALL, targetEntity = Device.class)
 	private Set<Device> devices;
 	
 	public User() {

@@ -14,8 +14,11 @@ import javax.validation.constraints.NotBlank;
 
 import org.hibernate.annotations.ColumnDefault;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.sun.istack.NotNull;
 
+@JsonIgnoreProperties({"hibernateLazyInitializer"})
 @Entity
 @Table(name = "data_plans")
 public class Plan{
@@ -38,6 +41,7 @@ public class Plan{
 	@NotNull
 	double costPerDevice;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy="plan", cascade=CascadeType.ALL)
 	private Set<Device> devices;
 	
