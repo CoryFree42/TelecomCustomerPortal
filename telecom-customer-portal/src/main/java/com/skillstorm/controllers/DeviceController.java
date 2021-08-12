@@ -18,30 +18,30 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.skillstorm.data.DeviceRepository;
 import com.skillstorm.models.Device;
+import com.skillstorm.service.DeviceService;
 
 @RestController
 @RequestMapping("/devices")
 public class DeviceController {
-
+	
 	@Autowired
-	private DeviceRepository repository;
-	//private UserService service; //inject UserService here instead
+	private DeviceService service;
 	
 	@PostMapping("/device")
 	public ResponseEntity<Device> save(@RequestBody @Valid Device device) {
 		                                   //Body             Entity
-		return new ResponseEntity<>(repository.save(device), HttpStatus.CREATED);
+		return new ResponseEntity<>(service.saveDevice(device), HttpStatus.CREATED);
 	}
 	
 	@GetMapping
 	public ResponseEntity<List<Device>> findAll(){
-		return new ResponseEntity<>(repository.findAll(), HttpStatus.OK);
+		return new ResponseEntity<>(service.getDevices(), HttpStatus.OK);
 	}
 	
-	@PutMapping("/device/{id}")
-	public ResponseEntity<Void> update(@RequestBody @Valid Device device, @PathVariable("id") String id) {
-		repository.save(device);
-		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+	@PutMapping("/device")
+	public ResponseEntity<Void> update(@RequestBody @Valid Device device) {
+		service.updateDevice(device);
+		return new ResponseEntity<>(HttpStatus.ACCEPTED);
 		//if(device.getPhoneNumber() == id && repository.findById(device.getPhoneNumber()).isPresent()) {
 		//	repository.save(device);
 		//	return new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -51,14 +51,14 @@ public class DeviceController {
 	
 	@GetMapping("/device/{id}")
 	public ResponseEntity<Device> findById(@PathVariable String id) {
-		java.util.Optional<Device> optional = repository.findById(id);
+		java.util.Optional<Device> optional = service.getDevice(id);
 		return optional.isPresent()? ResponseEntity.ok(optional.get()) : ResponseEntity.badRequest().build();
 	}
 	
 	@DeleteMapping("/device/{id}")
 	public void deleteById(@PathVariable String id) {
 		//java.util.Optional<User> optional = repository.findById(id);
-		repository.deleteById(id);
+		service.deleteDevice(id);
 	}
 	
 }

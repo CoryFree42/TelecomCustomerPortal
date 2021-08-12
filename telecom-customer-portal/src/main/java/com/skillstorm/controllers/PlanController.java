@@ -19,7 +19,7 @@ import com.skillstorm.service.PlanService;
 public class PlanController {
 
 	@Autowired
-	PlanService service;
+	private PlanService service;
 	
 	@GetMapping
 	public ResponseEntity<List<Plan>> findAll(){
