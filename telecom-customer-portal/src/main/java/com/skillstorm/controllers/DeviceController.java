@@ -30,7 +30,11 @@ public class DeviceController {
 	@PostMapping("/device")
 	public ResponseEntity<Device> save(@RequestBody @Valid Device device) {
 		                                   //Body             Entity
-		return new ResponseEntity<>(service.saveDevice(device), HttpStatus.CREATED);
+		if(service.saveDevice(device) != null) {
+			return new ResponseEntity<>(device, HttpStatus.CREATED);
+		}else {
+			return new ResponseEntity<>(HttpStatus.FORBIDDEN);
+		}
 	}
 	
 	@GetMapping

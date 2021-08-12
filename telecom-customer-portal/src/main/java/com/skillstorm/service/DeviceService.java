@@ -17,7 +17,10 @@ public class DeviceService {
 	DeviceRepository repository;
 	
 	public Device saveDevice(Device device) {
-		return repository.save(device);
+		if(!repository.findById(device.getPhoneNumber()).isPresent()) {
+			return repository.save(device);
+		}
+		return null;
 	}
 	public void updateDevice(Device device) {
 		repository.save(device);
