@@ -18,6 +18,7 @@ public class DeviceService {
 	
 	public Device saveDevice(Device device) {
 		if(!repository.findById(device.getPhoneNumber()).isPresent()) {
+			System.out.println(repository.countDevices(device.getUser().getUserID(), device.getPlan().getDataPlanID()));
 			return repository.save(device);
 		}
 		return null;
