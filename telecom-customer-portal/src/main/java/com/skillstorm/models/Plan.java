@@ -2,6 +2,7 @@ package com.skillstorm.models;
 
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -37,7 +38,7 @@ public class Plan{
 	@NotNull
 	double costPerDevice;
 	
-	@OneToMany(mappedBy="plan")
+	@OneToMany(mappedBy="plan", cascade=CascadeType.ALL)
 	private Set<Device> devices;
 	
 	
@@ -47,13 +48,12 @@ public class Plan{
 	}
 
 	public Plan(int dataPlanID, @NotNull int numberOfDevices, @NotBlank String planDescription,
-			@NotNull double costPerDevice, Set<Device> devices) {
+			@NotNull double costPerDevice) {
 		super();
 		this.dataPlanID = dataPlanID;
 		this.numberOfDevices = numberOfDevices;
 		this.planDescription = planDescription;
 		this.costPerDevice = costPerDevice;
-		this.devices = devices;
 	}
 
 	public int getDataPlanID() {
