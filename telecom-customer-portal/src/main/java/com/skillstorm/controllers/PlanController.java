@@ -12,22 +12,23 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.skillstorm.data.PlanRepository;
 import com.skillstorm.models.Plan;
+import com.skillstorm.service.PlanService;
 
 @RestController
 @RequestMapping("/plans")
 public class PlanController {
 
 	@Autowired
-	PlanRepository repository;
+	PlanService service;
 	
 	@GetMapping
 	public ResponseEntity<List<Plan>> findAll(){
-		return new ResponseEntity<>(repository.findAll(), HttpStatus.OK);
+		return new ResponseEntity<>(service.getPlans(), HttpStatus.OK);
 	}
 	
 	@GetMapping("/plans/{id}")
 	public ResponseEntity<Plan> findById(@PathVariable Integer id){
-		java.util.Optional<Plan> optional = repository.findById(id);
+		java.util.Optional<Plan> optional = service.findPlan(id);
 		return optional.isPresent() ? ResponseEntity.ok(optional.get()) : ResponseEntity.badRequest().build();
  	}
 	
