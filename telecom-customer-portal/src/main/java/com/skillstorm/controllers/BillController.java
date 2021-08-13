@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.skillstorm.models.User;
@@ -24,9 +25,9 @@ public class BillController {
 	@Autowired
 	BillService service;
 	
-	@GetMapping
-	public ResponseEntity<Double> getBill(@Valid @RequestBody User user){
-		return new ResponseEntity<>(service.getBill(user), HttpStatus.ACCEPTED);
+	@GetMapping(value="/{userID}")
+	public ResponseEntity<Double> getBill( @PathVariable int userID){
+		return new ResponseEntity<>(service.getBill(userID), HttpStatus.ACCEPTED);
 	}
 	
 	@GetMapping("/{id}")
