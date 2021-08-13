@@ -61,6 +61,7 @@ public class Plan{
 	}
 
 	public int getDataPlanID() {
+		System.out.println(dataPlanID + "I was called");
 		return dataPlanID;
 	}
 
