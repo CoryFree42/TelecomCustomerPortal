@@ -1,0 +1,21 @@
+<div>
+    <h2>Enter your information to create a new account!</h2>
+    <form (ngSubmit)="handleSubmit()">
+        <div class="form-group">
+            <input name="first-name" [(ngModel)]="formData.firstName" class="form-control" placeholder="First Name" type="text" />
+        </div>
+        <div class="form-group">
+            <input name="last-name" [(ngModel)]="formData.lastName" class="form-control" placeholder="Last Name" type="text" />
+        </div>
+        <div class="form-group">
+            <input name="email" [(ngModel)]="formData.email" class="form-control" placeholder="Email" type="text" />
+        </div>
+        <div class="form-group">
+            <input name="password" [(ngModel)]="formData.password" class="form-control" placeholder="Password" type="text" />
+        </div>
+        <div>
+            <input class="btn btn-primary submit-button" type="submit" value="Create Account" />
+        </div>
+    </form>
+</div>
+
