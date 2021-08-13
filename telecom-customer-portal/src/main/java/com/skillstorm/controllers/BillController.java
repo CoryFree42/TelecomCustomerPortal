@@ -25,7 +25,7 @@ public class BillController {
 	@Autowired
 	BillService service;
 	
-	@GetMapping(value="/{userID}")
+	@GetMapping(value="/bills/{userID}")
 	public ResponseEntity<Double> getBill( @PathVariable int userID){
 		return new ResponseEntity<>(service.getBill(userID), HttpStatus.ACCEPTED);
 	}
