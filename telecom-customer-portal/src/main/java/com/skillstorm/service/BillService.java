@@ -24,8 +24,8 @@ public double getBill(int userID) {
 		return total;
 	}
 	
-	public double getBill(User user, int planID) {
-		Double planBill = repository.getBill(user.getUserID(), planID);
+	public double getBill(int userID, int planID) {
+		Double planBill = repository.getBill(userID, planID);
 		if(planBill != null) return planBill; else return 0;
 	}
 	

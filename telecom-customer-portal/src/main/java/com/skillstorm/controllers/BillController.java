@@ -30,8 +30,8 @@ public class BillController {
 		return new ResponseEntity<>(service.getBill(userID), HttpStatus.ACCEPTED);
 	}
 	
-	@GetMapping("/{id}")
-	public ResponseEntity<Double> getBill(@Valid @RequestBody User user, @PathVariable int id){
-		return new ResponseEntity<>(service.getBill(user, id), HttpStatus.ACCEPTED);
+	@GetMapping("/{userID}/{planID}")
+	public ResponseEntity<Double> getBill(@PathVariable int userID, @PathVariable int planID){
+		return new ResponseEntity<>(service.getBill(userID, planID), HttpStatus.ACCEPTED);
 	}
 }
