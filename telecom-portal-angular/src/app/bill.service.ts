@@ -11,7 +11,12 @@ export class BillService {
   constructor(private http: HttpClient) { }
 
   getBill(user: User): Observable<any>{
-    return this.http.get(this.url, user);
+    return this.http.get(this.url + '/bills/' + user.userID);
   }
+
+  getABill(user: User , planID: number): Observable<any>{
+    return this.http.get(this.url + '/' + user.userID + '/' + planID);
+  }
+
 }
 
