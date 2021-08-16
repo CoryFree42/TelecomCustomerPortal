@@ -1,1 +1,21 @@
-<p>add-device works!</p>
+<form (ngSubmit)="handleSubmit()">
+    <div>
+        Phone Number:
+        <input type="text" [(ngModel)]="device.phoneNumber" name="device-phone-number"/>
+    </div>
+    <div>
+        Data Plan:
+        <input type="text" [(ngModel)]="device.plan" name="device-phone-number"/>
+    </div>
+    <div>
+        Device Name:
+        <input type="text" [(ngModel)]="device.deviceName" name="device-phone-number"/>
+    </div>
+    <div>
+        Device Description:
+        <input type="text" [(ngModel)]="device.deviceDescription" name="device-phone-number"/>
+    </div>
+    <div>
+        <input type="submit"/>
+    </div>
+</form>
