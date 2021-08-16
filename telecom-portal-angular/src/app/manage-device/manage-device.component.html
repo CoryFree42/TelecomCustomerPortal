@@ -1,1 +1,12 @@
-<p>manage-device works!</p>
+<table id="deviceTable">
+    <tr>
+        <th>Phone Number</th>
+        <th>Device Name</th>
+    </tr>
+    <tr *ngFor="let device of devices">
+        <td>{{ device.phoneNumber }}</td>
+        <td>{{ device.deviceName }}</td>
+        <td><button (click)="deleteDevice(device.phoneNumber)">Delete</button> </td>
+
+    </tr>
+</table>

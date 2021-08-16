@@ -1,8 +1,9 @@
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
 import { NewUserComponent } from './new-user/new-user.component';
 import { BillComponent } from './bill/bill.component';
+import { ManageDeviceComponent } from './manage-device/manage-device.component';
 
 const routes: Routes = [
   {
@@ -11,6 +12,8 @@ const routes: Routes = [
     path: 'new-user', component: NewUserComponent
   }, {
     path: 'bill', component: BillComponent
+  },{
+    path: 'device', component: ManageDeviceComponent
   }
 ];
 

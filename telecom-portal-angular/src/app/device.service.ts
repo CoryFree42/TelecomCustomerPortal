@@ -27,7 +27,7 @@ export class DeviceService {
     return this.http.put(this.url + "/device", device)
   }
 
-  deleteDevice(pNumber:number): Observable<any>{
+  deleteDevice(pNumber:String): Observable<any>{
     return this.http.delete(this.url + "/device/" + pNumber)
   }
 

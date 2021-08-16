@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
+import { DeviceService } from '../device.service';
+import Device from '../models/Device';
 @Component({
   selector: 'app-add-device',
   templateUrl: './add-device.component.html',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddDeviceComponent implements OnInit {
 
-  constructor() { }
+  service:DeviceService;
+  constructor(service:DeviceService) { 
+    this.service = service;
+  }
 
   ngOnInit(): void {
+    
   }
 
 }
