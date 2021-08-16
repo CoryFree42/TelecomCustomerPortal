@@ -9,13 +9,17 @@ import { HttpClientModule } from '@angular/common/http';
 import { HttpClient } from '@angular/common/http';
 import { NewUserComponent } from './new-user/new-user.component';
 import { FormsModule } from '@angular/forms';
+import { AddDeviceComponent } from './add-device/add-device.component';
+import { ManageDeviceComponent } from './manage-device/manage-device.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     BillComponent,
     UserDashboardComponent,
-    NewUserComponent
+    NewUserComponent,
+    AddDeviceComponent,
+    ManageDeviceComponent
   ],
   imports: [
     BrowserModule,
