@@ -60,6 +60,11 @@ public class DeviceController {
 		return optional.isPresent()? ResponseEntity.ok(optional.get()) : ResponseEntity.badRequest().build();
 	}
 	
+	@GetMapping("/{id}")
+	public ResponseEntity<List<Device>> findDevicesById(@PathVariable Integer id) {
+		return new ResponseEntity<List<Device>>(service.getDevices(id), HttpStatus.ACCEPTED);
+	}
+	
 	@DeleteMapping("/device/{id}")
 	public void deleteById(@PathVariable String id) {
 		//java.util.Optional<User> optional = repository.findById(id);

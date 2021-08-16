@@ -36,6 +36,10 @@ public class DeviceService {
 		return repository.findById(id);
 	}
 	
+	public List<Device> getDevices(Integer id){
+		return repository.getDevices(id);
+	}
+	
 	public List<Device> getDevices(){
 		return repository.findAll();
 		
