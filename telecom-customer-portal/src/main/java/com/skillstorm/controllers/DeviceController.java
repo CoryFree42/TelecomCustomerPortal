@@ -47,11 +47,6 @@ public class DeviceController {
 	public ResponseEntity<Void> update(@RequestBody @Valid Device device) {
 		service.updateDevice(device);
 		return new ResponseEntity<>(HttpStatus.ACCEPTED);
-		//if(device.getPhoneNumber() == id && repository.findById(device.getPhoneNumber()).isPresent()) {
-		//	repository.save(device);
-		//	return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-		//}
-		//return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 	}
 	
 	@GetMapping("/device/{id}")
@@ -67,7 +62,6 @@ public class DeviceController {
 	
 	@DeleteMapping("/device/{id}")
 	public void deleteById(@PathVariable String id) {
-		//java.util.Optional<User> optional = repository.findById(id);
 		service.deleteDevice(id);
 	}
 	
