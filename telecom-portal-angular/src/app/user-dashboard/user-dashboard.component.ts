@@ -9,17 +9,17 @@ import User from '../models/User';
 })
 export class UserDashboardComponent implements OnInit {
 
-  currentUserList: Array<User> = [];
+  currentUser: User = new User();
   service: UserService;
 
   constructor(service: UserService) {
     this.service = service;
-   }
+  }
 
   ngOnInit(): void {
-    this.service.getAllUsers().subscribe(result => {
+    this.service.getUser(1).subscribe(result => { //FIXME: need a way to automatically pass userId as parameter instead of a number
       console.log(result);
-      this.currentUserList = result;
+      this.currentUser = result;
     });
   }
 }

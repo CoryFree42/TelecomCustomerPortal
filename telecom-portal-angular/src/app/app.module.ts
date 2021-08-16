@@ -11,6 +11,7 @@ import { NewUserComponent } from './new-user/new-user.component';
 import { FormsModule } from '@angular/forms';
 import { AddDeviceComponent } from './add-device/add-device.component';
 import { ManageDeviceComponent } from './manage-device/manage-device.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { ManageDeviceComponent } from './manage-device/manage-device.component';
     UserDashboardComponent,
     NewUserComponent,
     AddDeviceComponent,
-    ManageDeviceComponent
+    ManageDeviceComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
