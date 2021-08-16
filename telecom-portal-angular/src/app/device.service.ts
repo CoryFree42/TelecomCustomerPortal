@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, Observer, Subject } from 'rxjs';
+import Device from './models/Device';
 
 
 @Injectable({
@@ -15,11 +16,19 @@ export class DeviceService {
   }
 
   getADevice(pNumber:number): Observable<any>{
-    return this.http.get(this.url + "/" + "device/" + pNumber)
+    return this.http.get(this.url + "/device/" + pNumber)
   }
 
-  saveDevice(): Observable<any> {
-    return new Observable;
+  saveDevice(device:Device): Observable<any> {
+    return this.http.post(this.url + "/device", device)
+  }
+
+  updateDevice(device:Device): Observable<any>{
+    return this.http.put(this.url + "/device", device)
+  }
+
+  deleteDevice(pNumber:number): Observable<any>{
+    return this.http.delete(this.url + "/device/" + pNumber)
   }
 
 
