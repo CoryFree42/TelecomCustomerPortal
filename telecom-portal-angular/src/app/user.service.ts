@@ -18,8 +18,8 @@ export class UserService {
     return this.http.get(this.url);
   }
 
-  getUser(user: User): Observable<any>{
-    return this.http.get(this.url + '/user/' + user.userID);
+  getUser(userID: number): Observable<any>{
+    return this.http.get(this.url + '/user/' + userID);
   }
 
   saveUser(user: User): Observable<any>{

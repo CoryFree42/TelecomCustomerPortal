@@ -1,0 +1,17 @@
+
+
+<div>
+    <h2>Enter a valid email and password to login</h2>
+    <form (ngSubmit)="checkValidUser()">
+        <div class="form-group">
+            <input name="email" class="form-control" placeholder="Email" type="text" /> <!-- Add [(ngModel)]="formData.email" -->
+        </div>
+        <div class="form-group">
+            <input name="password" class="form-control" placeholder="Password" type="text" />
+        </div>
+        <div>
+            <input class="btn btn-primary submit-button" type="submit" value="Create Account" />
+        </div>
+    </form>
+    <!--<a [routerLink]="['/new-user']">Add User</a>-->
+</div>

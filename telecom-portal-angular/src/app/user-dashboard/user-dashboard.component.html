@@ -7,11 +7,11 @@
             <th>Email</th>
             <th>Password</th>
         </tr>
-        <tr *ngFor="let User of currentUserList">
-            <td>{{ User.firstName }}</td>
-            <td>{{ User.lastName }}</td>
-            <td>{{ User.email }}</td>
-            <td>{{ User.password }}</td>
+        <tr>
+            <td>{{ currentUser.firstName }}</td>
+            <td>{{ currentUser.lastName }}</td>
+            <td>{{ currentUser.email }}</td>
+            <td>{{ currentUser.password }}</td>
         </tr>
 
     </table>

@@ -1,6 +1,6 @@
 <div>
     <h2>Enter your information to create a new account!</h2>
-    <form (ngSubmit)="handleSubmit()">
+    <form (ngSubmit)="handleSubmit(); userForm.reset()" id="new-user" #userForm>
         <div class="form-group">
             <input name="first-name" [(ngModel)]="formData.firstName" class="form-control" placeholder="First Name" type="text" />
         </div>

@@ -68,6 +68,12 @@ public class UserController {
 		return optional.isPresent()? ResponseEntity.ok(optional.get()) : ResponseEntity.badRequest().build();
 	}
 	
+	//@GetMapping("/user/{email}")
+	//public ResponseEntity<User> findById(@PathVariable String email) {
+	//	java.util.Optional<User> optional = repository.findById(email);
+	//	return optional.isPresent()? ResponseEntity.ok(optional.get()) : ResponseEntity.badRequest().build();
+	//}
+	
 	@DeleteMapping("/user/{id}")
 	public void deleteById(@PathVariable Integer id) {
 		//java.util.Optional<User> optional = repository.findById(id);
