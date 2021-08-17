@@ -5,6 +5,7 @@ import { NewUserComponent } from './new-user/new-user.component';
 import { BillComponent } from './bill/bill.component';
 import { LoginComponent } from './login/login.component';
 import { ManageDeviceComponent } from './manage-device/manage-device.component';
+import { AddDeviceComponent } from './add-device/add-device.component';
 
 const routes: Routes = [
   {
@@ -15,6 +16,8 @@ const routes: Routes = [
     path: 'bill', component: BillComponent
   },{
     path: 'device', component: ManageDeviceComponent
+  },{
+    path: 'add-device', component: AddDeviceComponent
   },{
     path: 'login', component: LoginComponent
   }

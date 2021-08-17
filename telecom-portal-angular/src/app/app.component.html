@@ -8,6 +8,9 @@
   <a [routerLink]="['/login']">Login</a> |
   <a [routerLink]="['/dashboard']">User Dashboard</a> | 
   <a [routerLink]="['/device']">Manage Devices</a> |
+  <a [routerLink]="['/add-device']">Add Devices</a> |
   <a [routerLink]="['/bill']">Bills</a>
+  <button (click)="logout()" [routerLink]="['/login']">Log Out</button>
   <router-outlet></router-outlet>
 </div>
+

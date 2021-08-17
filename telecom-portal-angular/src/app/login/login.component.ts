@@ -16,7 +16,8 @@ export class LoginComponent implements OnInit {
 
   constructor(private service: UserService, userManager: UserManagerService) { 
     this.formData = new User();
-    this.userManager = userManager;    
+    this.userManager = userManager;
+    console.log(this.userManager.getUser()); 
   }
 
   ngOnInit(): void {
@@ -25,8 +26,13 @@ export class LoginComponent implements OnInit {
   checkValidUser(): void{
     this.service.getUserByEmailPassword(this.formData.email, this.formData.password).subscribe(result => {
       console.log(result);
-      this.formData = result;
-      this.userManager.setUser(this.formData);
+      if(result != null) {
+        this.formData = result;
+        this.userManager.setUser(this.formData);
+        alert("Successfully logged in as " + this.formData.firstName + " " + this.formData.lastName + "!");
+      } else {
+        alert("Unsuccessful log in attempt.");
+      }
     })
   }
 }
