@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { DeviceService } from '../device.service';
 import Device from '../models/Device';
 import User from '../models/User';
@@ -6,6 +6,9 @@ import { UserManagerService } from '../user-manager.service';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import Plan from '../models/Plan';
 import { PlanManagerService } from '../plan-manager.service';
+import { NgbAlert } from '@ng-bootstrap/ng-bootstrap';
+import { Subject } from 'rxjs';
+import { debounceTime } from 'rxjs/operators';
 
 
 @Component({
@@ -16,8 +19,13 @@ import { PlanManagerService } from '../plan-manager.service';
 
 
 
+
+
 export class ManageDeviceComponent implements OnInit {
 
+  @ViewChild('selfClosingAlert', {static: false}) selfClosingAlert: NgbAlert | undefined;
+
+  private _error = new Subject<string>();
   service:DeviceService;
   devices:Array<Device>;
   userManager:UserManagerService;
@@ -25,7 +33,7 @@ export class ManageDeviceComponent implements OnInit {
   user:User;
   tempDevice:Device;
   //plan:Plan;
-  closeResult = '';
+  errorMessage = '';
   constructor(service:DeviceService, userManager:UserManagerService, private modalService: NgbModal, planService:PlanManagerService) { 
     this.service = service;
     this.devices = [];
@@ -42,8 +50,15 @@ export class ManageDeviceComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.service.getDevices(this.user.userID).subscribe(result => this.devices = result)
+    this.service.getDevices(this.user.userID).subscribe(result => this.devices = result);
+    this._error.subscribe(message => this.errorMessage = message);
+    this._error.pipe(debounceTime(5000)).subscribe(() => {
+      if (this.selfClosingAlert) {
+        this.selfClosingAlert.close();
+      }
+    });
   }
+
 
   open(content:any, device:Device) {
     this.tempDevice = new Device(device.phoneNumber, device.deviceName, device.deviceDescription, device.user, device.plan);
@@ -56,7 +71,7 @@ export class ManageDeviceComponent implements OnInit {
             device.deviceDescription = this.tempDevice.deviceDescription;
             device.plan = this.tempDevice.plan;
           
-        }, err => console.log("There was an error"));
+        }, err => this._error.next("There was an error"));
 
         
 
