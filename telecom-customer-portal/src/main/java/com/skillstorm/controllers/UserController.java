@@ -80,4 +80,10 @@ public class UserController {
 		repository.deleteById(id);
 	}
 	
+	@GetMapping("/user/{email}/{password}")
+	public ResponseEntity<User> findByNamePassword(@PathVariable String email, @PathVariable String password) {
+		java.util.Optional<User> optional = repository.findByNamePassword(email, password);
+		return optional.isPresent()? ResponseEntity.ok(optional.get()) : ResponseEntity.badRequest().build();
+	}
+	
 }

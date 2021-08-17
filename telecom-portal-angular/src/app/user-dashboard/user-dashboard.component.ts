@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from './../user.service';
 import User from '../models/User';
+import { UserManagerService } from '../user-manager.service';
 
 @Component({
   selector: 'app-user-dashboard',
@@ -9,15 +10,18 @@ import User from '../models/User';
 })
 export class UserDashboardComponent implements OnInit {
 
-  currentUser: User = new User();
+  currentUser: User;
   service: UserService;
+  userManager:UserManagerService;  
 
-  constructor(service: UserService) {
+  constructor(service: UserService, userManager: UserManagerService) {
     this.service = service;
+    this.userManager = userManager;
+    this.currentUser = userManager.getUser();
   }
 
   ngOnInit(): void {
-    this.service.getUser(1).subscribe(result => { //FIXME: need a way to automatically pass userId as parameter instead of a number
+    this.service.getUser(this.currentUser.userID).subscribe(result => {
       console.log(result);
       this.currentUser = result;
     });
