@@ -23,15 +23,16 @@ export class ManageDeviceComponent implements OnInit {
   userManager:UserManagerService;
   planService:PlanManagerService;
   user:User;
-  plan:Plan;
+  tempDevice:Device;
+  //plan:Plan;
   closeResult = '';
   constructor(service:DeviceService, userManager:UserManagerService, private modalService: NgbModal, planService:PlanManagerService) { 
     this.service = service;
     this.devices = [];
     this.userManager = userManager;
     this.user = userManager.getUser();
-    this.plan = new Plan("1", 4, "adwaw", 32.99);
     this.planService = planService;
+    this.tempDevice = new Device;
   }
 
   deleteDevice(pNumber:String) {
@@ -44,17 +45,23 @@ export class ManageDeviceComponent implements OnInit {
     this.service.getDevices(this.user.userID).subscribe(result => this.devices = result)
   }
 
-  open(content:any) {
+  open(content:any, device:Device) {
+    this.tempDevice = new Device(device.phoneNumber, device.deviceName, device.deviceDescription, device.user, device.plan);
+    console.log(this.tempDevice);
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
-      this.closeResult = `Closed with: ${result}`;
       if(result === "Save click"){
-        console.log(result);
-      }
+        this.service.updateDevice(this.tempDevice).subscribe(result => console.log(result));
+        device.deviceDescription = this.tempDevice.deviceDescription;
+        device.deviceName = this.tempDevice.deviceName;
+        device.deviceDescription = this.tempDevice.deviceDescription;
+        device.plan = this.tempDevice.plan;
 
+      }
     }, (reason) => {
-     
+      
     });
   }
+
 
 
 }
