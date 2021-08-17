@@ -17,10 +17,12 @@ export class ManageDeviceComponent implements OnInit {
   service:DeviceService;
   devices:Array<Device>;
   userManager:UserManagerService;
+  user:User;
   constructor(service:DeviceService, userManager:UserManagerService) { 
     this.service = service;
     this.devices = [];
     this.userManager = userManager;
+    this.user = userManager.getUser();
   }
 
   deleteDevice(pNumber:String) {
@@ -30,9 +32,7 @@ export class ManageDeviceComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.service.getDevices().subscribe(result => this.devices = result)
-    this.userManager.setUser(new User(1, "Chris", "Ung", "C.ung3232@gmail.com", "dawdads"))
-    console.log(this.userManager.getUser());
+    this.service.getDevices(this.user.userID).subscribe(result => this.devices = result)
   }
 
 }

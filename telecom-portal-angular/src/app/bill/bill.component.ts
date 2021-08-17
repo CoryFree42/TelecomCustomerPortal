@@ -27,7 +27,7 @@ export class BillComponent implements OnInit {
     this.plan1 = 0;
     this.plan2 = 0;
     this.plan3 = 0;
-    this.user = {userID:0, firstName:"daw", lastName:"wadadw", email:"Chung@gmail.com", password:"adwda"};
+    this.user = {userID:2, firstName:"daw", lastName:"wadadw", email:"Chung@gmail.com", password:"adwda"};
     this.umService = userManagerService;
 
   }
@@ -51,6 +51,7 @@ export class BillComponent implements OnInit {
         this.plan3 = result;
       })
    })
+   this.umService.setUser(this.user);
    console.log(this.umService.getUser());
    
   }

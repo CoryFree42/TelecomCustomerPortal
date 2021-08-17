@@ -11,8 +11,8 @@ export class DeviceService {
   url = "http://localhost:9001/devices"
   constructor(private http:HttpClient) { }
 
-  getDevices(): Observable<any>{
-    return this.http.get(this.url);
+  getDevices(userID:Number): Observable<any>{
+    return this.http.get(this.url + "/" + userID);
   }
 
   getADevice(pNumber:number): Observable<any>{
