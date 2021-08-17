@@ -5,6 +5,7 @@ import User from '../models/User';
 import { UserManagerService } from '../user-manager.service';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import Plan from '../models/Plan';
+import { PlanManagerService } from '../plan-manager.service';
 
 
 @Component({
@@ -20,15 +21,17 @@ export class ManageDeviceComponent implements OnInit {
   service:DeviceService;
   devices:Array<Device>;
   userManager:UserManagerService;
+  planService:PlanManagerService;
   user:User;
   plan:Plan;
   closeResult = '';
-  constructor(service:DeviceService, userManager:UserManagerService, private modalService: NgbModal) { 
+  constructor(service:DeviceService, userManager:UserManagerService, private modalService: NgbModal, planService:PlanManagerService) { 
     this.service = service;
     this.devices = [];
     this.userManager = userManager;
     this.user = userManager.getUser();
-    this.plan = new Plan("1", 4, "adwaw", 32.99)
+    this.plan = new Plan("1", 4, "adwaw", 32.99);
+    this.planService = planService;
   }
 
   deleteDevice(pNumber:String) {
