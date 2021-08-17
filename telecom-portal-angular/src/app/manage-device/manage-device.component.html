@@ -32,9 +32,9 @@
                     <div ngbDropdown class="d-inline-block">
                       <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>Toggle dropdown</button>
                       <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-                        <button ngbDropdownItem [(ngModel)]="device.plan">{{ plan.planDescription }}</button>
-                        <button ngbDropdownItem>Another Action</button>
-                        <button ngbDropdownItem>Something else is here</button>
+                        <button ngbDropdownItem [(ngModel)]="device.plan">{{ planService.getPlan().planDescription }}</button>
+                        <button ngbDropdownItem>{{ planService.getPlan1().planDescription }}</button>
+                        <button ngbDropdownItem>{{ planService.getPlan2().planDescription }}</button>
                       </div>
                     </div>
                 </div>
