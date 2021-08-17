@@ -12,6 +12,7 @@ import { FormsModule } from '@angular/forms';
 import { AddDeviceComponent } from './add-device/add-device.component';
 import { ManageDeviceComponent } from './manage-device/manage-device.component';
 import { LoginComponent } from './login/login.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { LoginComponent } from './login/login.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    NgbModule
   ],
   providers: [HttpClient],
   bootstrap: [AppComponent]
