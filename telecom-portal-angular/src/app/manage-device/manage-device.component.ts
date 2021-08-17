@@ -8,7 +8,6 @@ import Plan from '../models/Plan';
 import { PlanManagerService } from '../plan-manager.service';
 import { NgbAlert } from '@ng-bootstrap/ng-bootstrap';
 import { Subject } from 'rxjs';
-import { debounceTime } from 'rxjs/operators';
 
 
 @Component({
@@ -52,11 +51,6 @@ export class ManageDeviceComponent implements OnInit {
   ngOnInit(): void {
     this.service.getDevices(this.user.userID).subscribe(result => this.devices = result);
     this._error.subscribe(message => this.errorMessage = message);
-    this._error.pipe(debounceTime(5000)).subscribe(() => {
-      if (this.selfClosingAlert) {
-        this.selfClosingAlert.close();
-      }
-    });
   }
 
 
