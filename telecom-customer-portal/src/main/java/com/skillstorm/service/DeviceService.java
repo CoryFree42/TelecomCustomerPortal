@@ -19,19 +19,19 @@ public class DeviceService {
 		if(!repository.findById(device.getPhoneNumber()).isPresent()) {
 			switch(device.getPlan().getDataPlanID()) {
 			case 1:{
-				if(repository.countDevices(device.getUser().getUserID(), device.getPlan().getDataPlanID()) < 6) {
+				if(repository.countDevices(device.getUser().getUserID(), device.getPlan().getDataPlanID()) < device.getPlan().getNumberOfDevices()) {
 					return repository.save(device);
 				}else
 					return null;
 			}
 			case 2:{
-				if(repository.countDevices(device.getUser().getUserID(), device.getPlan().getDataPlanID()) < 8) {
+				if(repository.countDevices(device.getUser().getUserID(), device.getPlan().getDataPlanID()) < device.getPlan().getNumberOfDevices()) {
 					return repository.save(device);
 				}else
 					return null;
 			}
 			case 3:{
-				if(repository.countDevices(device.getUser().getUserID(), device.getPlan().getDataPlanID()) < 10) {
+				if(repository.countDevices(device.getUser().getUserID(), device.getPlan().getDataPlanID()) < device.getPlan().getNumberOfDevices()) {
 					return repository.save(device);
 				}else
 					return null;
