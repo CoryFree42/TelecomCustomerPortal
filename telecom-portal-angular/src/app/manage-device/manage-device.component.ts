@@ -31,7 +31,6 @@ export class ManageDeviceComponent implements OnInit {
   planService:PlanManagerService;
   user:User;
   tempDevice:Device;
-  //plan:Plan;
   errorMessage = '';
   constructor(service:DeviceService, userManager:UserManagerService, private modalService: NgbModal, planService:PlanManagerService) { 
     this.service = service;
@@ -42,10 +41,10 @@ export class ManageDeviceComponent implements OnInit {
     this.tempDevice = new Device;
   }
 
-  deleteDevice(pNumber:String) {
-    this.service.deleteDevice(pNumber).subscribe(result =>{
-      console.log(result);
-    })
+  deleteDevice(device:Device) {
+      this.service.deleteDevice(device.phoneNumber).subscribe(result =>{
+        device.phoneNumber= '';
+      })
   }
 
   ngOnInit(): void {

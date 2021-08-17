@@ -7,11 +7,12 @@
         <th>Plan</th>
     </tr>
     <tr *ngFor="let device of devices">
+      <div *ngIf="device.phoneNumber != ''">
         <td>{{ device.phoneNumber }}</td>
         <td>{{ device.deviceName }}</td>
         <td>{{ device.deviceDescription }}</td>
         <td>{{ device.plan.planDescription }}</td>
-        <td><button (click)="deleteDevice(device.phoneNumber)">Delete</button> </td>
+        <td><button (click)="deleteDevice(device)">Delete</button> </td>
 
         <td><button class="btn btn-lg btn-outline-primary" (click)="open(content, device)">Update</button></td>
         <ng-template #content let-modal>
@@ -53,6 +54,7 @@
             <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
           </div>
         </ng-template>
+      </div>
     </tr>
 </table>
 
