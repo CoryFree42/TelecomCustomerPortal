@@ -25,4 +25,8 @@ export class UserService {
   saveUser(user: User): Observable<any>{
     return this.http.post(this.url + '/user', user);
   }
+
+  getUserByEmailPassword(email: String, password: String): Observable<any>{
+    return this.http.get(this.url + '/user/' + email + '/' + password);
+  }
 }

@@ -2,12 +2,12 @@
 
 <div>
     <h2>Enter a valid email and password to login</h2>
-    <form (ngSubmit)="checkValidUser()">
+    <form (ngSubmit)="checkValidUser(); loginForm.reset()" id="login-form" #loginForm>
         <div class="form-group">
-            <input name="email" class="form-control" placeholder="Email" type="text" /> <!-- Add [(ngModel)]="formData.email" -->
+            <input name="email"  [(ngModel)]="formData.email" class="form-control" placeholder="Email" type="text" />
         </div>
         <div class="form-group">
-            <input name="password" class="form-control" placeholder="Password" type="text" />
+            <input name="password" [(ngModel)]="formData.password" class="form-control" placeholder="Password" type="text" />
         </div>
         <div>
             <input class="btn btn-primary submit-button" type="submit" value="Log In" />
