@@ -20,7 +20,7 @@ export class DeviceService {
   }
 
   saveDevice(device:Device): Observable<any> {
-    return this.http.post(this.url + "/device", device)
+      return this.http.post(this.url + "/device", device)
   }
 
   updateDevice(device:Device): Observable<any>{

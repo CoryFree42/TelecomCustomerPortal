@@ -47,14 +47,18 @@ export class ManageDeviceComponent implements OnInit {
 
   open(content:any, device:Device) {
     this.tempDevice = new Device(device.phoneNumber, device.deviceName, device.deviceDescription, device.user, device.plan);
-    console.log(this.tempDevice);
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
       if(result === "Save click"){
-        this.service.updateDevice(this.tempDevice).subscribe(result => console.log(result));
-        device.deviceDescription = this.tempDevice.deviceDescription;
-        device.deviceName = this.tempDevice.deviceName;
-        device.deviceDescription = this.tempDevice.deviceDescription;
-        device.plan = this.tempDevice.plan;
+
+        this.service.updateDevice(this.tempDevice).subscribe(element =>{
+            device.deviceDescription = this.tempDevice.deviceDescription;
+            device.deviceName = this.tempDevice.deviceName;
+            device.deviceDescription = this.tempDevice.deviceDescription;
+            device.plan = this.tempDevice.plan;
+          
+        }, err => console.log("There was an error"));
+
+        
 
       }
     }, (reason) => {
