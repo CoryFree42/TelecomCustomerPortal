@@ -27,8 +27,8 @@ export class BillComponent implements OnInit {
     this.plan1 = 0;
     this.plan2 = 0;
     this.plan3 = 0;
-    this.user = {userID:1, firstName:"daw", lastName:"wadadw", email:"Chung@gmail.com", password:"adwda"};
     this.umService = userManagerService;
+    this.user = userManagerService.getUser();
 
   }
 

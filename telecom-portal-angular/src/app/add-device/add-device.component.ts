@@ -22,8 +22,9 @@ export class AddDeviceComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    
-    this.userService.setUser(new User(1, "Chris", "Ung", "C.ung3232@gmail.com", "dawdads"))
+    //i dont think we need this one line
+    //this.userService.setUser(new User(1, "Chris", "Ung", "C.ung3232@gmail.com", "dawdads")) 
+
     this.device
     console.log(this.userService.getUser());
   }
