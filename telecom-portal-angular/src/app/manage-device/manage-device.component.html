@@ -8,6 +8,57 @@
         <td>{{ device.phoneNumber }}</td>
         <td>{{ device.deviceName }}</td>
         <td><button (click)="deleteDevice(device.phoneNumber)">Delete</button> </td>
+
+        <td><button class="btn btn-lg btn-outline-primary" (click)="open(content)">Update</button></td>
+        <ng-template #content let-modal>
+          <div class="modal-header">
+            <h4 class="modal-title" id="modal-basic-title">Device Update</h4>
+            <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="form-group">
+                <label for="dateOfBirth">Date of birth</label>
+                <div class="input-group">
+                  <div>
+                    Phone Number:
+                    <input type="text" [(ngModel)]="device.phoneNumber" name=device.phoneNumber/>
+                </div>
+                <div class="dropdown">
+                    Data Plan:
+                    <!-- <input type="drop" [(ngModel)]="device.plan.planDescription" name=device.plan.planDescription/> -->
+                    <div ngbDropdown class="d-inline-block">
+                      <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>Toggle dropdown</button>
+                      <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                        <button ngbDropdownItem [(ngModel)]="device.plan">{{ plan.planDescription }}</button>
+                        <button ngbDropdownItem>Another Action</button>
+                        <button ngbDropdownItem>Something else is here</button>
+                      </div>
+                    </div>
+                </div>
+                <div>
+                    Device Name:
+                    <input type="text" [(ngModel)]="device.deviceName" name=device.deviceName/>
+                </div>
+                <div>
+                    Device Description:
+                    <input type="text" [(ngModel)]="device.deviceDescription" name=device.deviceDescription/>
+                </div>
+                <div>
+                    <input type="submit"/>
+                </div>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
+          </div>
+        </ng-template>
+        
+        
     </tr>
 </table>
 
