@@ -48,8 +48,34 @@ public class DeviceService {
 		}
 		return null;
 	}
-	public void updateDevice(Device device) {
-		repository.save(device);
+	public Device updateDevice(Device device) {
+		if(repository.findById(device.getPhoneNumber()).isPresent()) {
+			switch(device.getPlan().getDataPlanID()) {
+			case 1:{
+				if(repository.countDevices(device.getUser().getUserID(), device.getPlan().getDataPlanID()) < device.getPlan().getNumberOfDevices()) {
+					return repository.save(device);
+				}else
+					return null;
+			}
+			case 2:{
+				if(repository.countDevices(device.getUser().getUserID(), device.getPlan().getDataPlanID()) < device.getPlan().getNumberOfDevices()) {
+					return repository.save(device);
+				}else
+					return null;
+			}
+			case 3:{
+				if(repository.countDevices(device.getUser().getUserID(), device.getPlan().getDataPlanID()) < device.getPlan().getNumberOfDevices()) {
+					return repository.save(device);
+				}else
+					return null;
+			}
+			default:{
+				return null;
+			}
+			
+			}
+		}
+		return null;
 	}
 	
 	public void deleteDevice(String id) {

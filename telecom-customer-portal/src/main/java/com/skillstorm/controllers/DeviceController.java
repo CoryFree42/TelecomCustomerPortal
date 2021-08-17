@@ -45,8 +45,11 @@ public class DeviceController {
 	
 	@PutMapping("/device")
 	public ResponseEntity<Void> update(@RequestBody @Valid Device device) {
-		service.updateDevice(device);
-		return new ResponseEntity<>(HttpStatus.ACCEPTED);
+		if(service.updateDevice(device) != null) {
+			return new ResponseEntity<>(HttpStatus.ACCEPTED);
+		}else {
+			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+		}
 	}
 	
 	@GetMapping("/device/{id}")
