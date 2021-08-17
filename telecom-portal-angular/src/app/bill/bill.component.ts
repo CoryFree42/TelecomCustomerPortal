@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { BillService } from '../bill.service';
 import { UserService } from '../user.service';
 import User from '../models/User';
+import { UserManagerService } from '../user-manager.service';
 
 @Component({
   selector: 'app-bill',
@@ -17,8 +18,9 @@ export class BillComponent implements OnInit {
   user:User;
   billService:BillService;
   userService:UserService;
+  umService:UserManagerService;
 
-  constructor(bservice: BillService, uservice:UserService) { 
+  constructor(bservice: BillService, uservice:UserService, userManagerService:UserManagerService) { 
     this.billService = bservice;
     this.userService = uservice;
     this.bill = 0;
@@ -26,6 +28,7 @@ export class BillComponent implements OnInit {
     this.plan2 = 0;
     this.plan3 = 0;
     this.user = {userID:0, firstName:"daw", lastName:"wadadw", email:"Chung@gmail.com", password:"adwda"};
+    this.umService = userManagerService;
 
   }
 
@@ -48,6 +51,7 @@ export class BillComponent implements OnInit {
         this.plan3 = result;
       })
    })
+   console.log(this.umService.getUser());
    
   }
 

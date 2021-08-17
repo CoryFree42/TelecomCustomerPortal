@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { DeviceService } from '../device.service';
 import { observable } from 'rxjs';
 import Device from '../models/Device';
+import User from '../models/User';
+import { UserManagerService } from '../user-manager.service'
 @Component({
   selector: 'app-add-device',
   templateUrl: './add-device.component.html',
@@ -12,13 +14,18 @@ export class AddDeviceComponent implements OnInit {
 
   device: Device;
   service: DeviceService;
-  constructor(service:DeviceService) {
+  userService: UserManagerService;
+  constructor(service:DeviceService, userService:UserManagerService) {
     this.device = new Device;
     this.service = service;
+    this.userService = userService;
   }
 
   ngOnInit(): void {
     
+    this.userService.setUser(new User(1, "Chris", "Ung", "C.ung3232@gmail.com", "dawdads"))
+    this.device
+    console.log(this.userService.getUser());
   }
 
   handleSubmit(): void{
