@@ -14,6 +14,7 @@ import { ManageDeviceComponent } from './manage-device/manage-device.component';
 import { LoginComponent } from './login/login.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { PlansComponent } from './plans/plans.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { PlansComponent } from './plans/plans.component';
     AddDeviceComponent,
     ManageDeviceComponent,
     LoginComponent,
-    PlansComponent
+    PlansComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
