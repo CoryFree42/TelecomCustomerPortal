@@ -34,6 +34,7 @@ export class UserDashboardComponent implements OnInit {
       console.log(result);
       this.currentUser = result;
     });
+    this._error.subscribe(message => this.errorMessage = message);
   }
 
   open(content:any, updateUser:User) {
