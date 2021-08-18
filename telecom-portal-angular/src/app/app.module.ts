@@ -13,6 +13,7 @@ import { AddDeviceComponent } from './add-device/add-device.component';
 import { ManageDeviceComponent } from './manage-device/manage-device.component';
 import { LoginComponent } from './login/login.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { PlansComponent } from './plans/plans.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     NewUserComponent,
     AddDeviceComponent,
     ManageDeviceComponent,
-    LoginComponent
+    LoginComponent,
+    PlansComponent
   ],
   imports: [
     BrowserModule,
