@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import User from '../models/User';
+import { UserManagerService } from '../user-manager.service';
 
 @Component({
   selector: 'app-navbar',
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor() { }
+  userManagerService:UserManagerService;
+  
+  constructor(userManagerService:UserManagerService) {
+    this.userManagerService = userManagerService;
+   }
 
   ngOnInit(): void {
+  }
+
+  logout(): void {
+    this.userManagerService.setUser(new User(0, "", "", "", ""));
+    alert("Successfully logged out!");
   }
 
 }
