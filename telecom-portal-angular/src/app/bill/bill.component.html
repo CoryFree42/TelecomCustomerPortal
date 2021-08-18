@@ -1,14 +1,16 @@
-<div class="jumbotron container-fluid">
-    <h1 class="display-3">Billing</h1>
-    <h3>{{ planService.getPlan().planDescription }}</h3>
-    <h3>{{ plan }}</h3>
-    <h4>+</h4>
-    <h3>{{ planService.getPlan1().planDescription }}</h3>
-    <h3>{{ plan1 }}</h3>
-    <h4>+</h4>
-    <h3>{{ planService.getPlan().planDescription }}</h3>
-    <h3>{{ plan2 }}</h3>
-    <h4>=</h4>
-    <h2>Estimated Total Bill: {{ bill }}</h2>
-
+<div class="container-fluid">
+    <div class="row align-items-center text-center">
+        <div class="col-3"></div>
+        <div class="col-6 border rounded m-3 p-5">
+        <h1 class="display-3 m-2 border bg-info">Billing</h1>
+        <h3 class="text-success">{{ planService.getPlan().planDescription }} = ${{ plan }}</h3>
+        <h4>+</h4>
+        <h3 class="text-warning">{{ planService.getPlan1().planDescription }} = ${{ plan1 }}</h3>
+        <h4>+</h4>
+        <h3 class="text-info">{{ planService.getPlan().planDescription }} = ${{ plan2 }}</h3>
+        <h4>=</h4>
+        <h2 class="text-primary">Estimated Total Bill: {{ bill }}</h2>
+        </div>
+        <div class="col-3"></div>
+    </div>
 </div>
