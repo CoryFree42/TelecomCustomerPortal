@@ -1,17 +1,35 @@
 
 
-<div>
-    <h2>Enter a valid email and password to login</h2>
-    <form (ngSubmit)="checkValidUser(); loginForm.reset()" id="login-form" #loginForm>
-        <div class="form-group">
-            <input name="email"  [(ngModel)]="formData.email" class="form-control" placeholder="Email" type="text" />
+<div class="container-fluid">
+    <div class="row">
+        <br>
+        <br>
+        <br>      
+        <br>
+    </div>
+    <div class="row"> 
+        <div class="col-3"></div>
+        <div class="col-6 border rounded">
+            <h2>Enter a valid email and password to login:</h2>
+            <form (ngSubmit)="checkValidUser(); loginForm.reset()" class="mg-5" id="login-form" #loginForm>
+                <div class="input-group mb-3">
+                    <div>
+                        <span class="input-group-text" id="1">Email:</span>
+                    </div>
+                    <input name="email"  [(ngModel)]="formData.email" class="form-control" type="text" />
+                </div>
+                <div class="input-group mb-3">
+                    <div>
+                        <span class="input-group-text" id="2">Password:</span>
+                    </div>
+                    <input name="password" [(ngModel)]="formData.password" class="form-control" type="text" />
+                </div>
+                <div>
+                    <input class="btn btn-primary" type="submit" value="Log In" />
+                </div>
+            </form>
+            <br>
+            <a [routerLink]="['/new-user']">Create New User</a>
         </div>
-        <div class="form-group">
-            <input name="password" [(ngModel)]="formData.password" class="form-control" placeholder="Password" type="text" />
-        </div>
-        <div>
-            <input class="btn btn-primary submit-button" type="submit" value="Log In" />
-        </div>
-    </form>
-    <a [routerLink]="['/new-user']">Create New User</a>
+    </div>
 </div>
