@@ -1,20 +1,22 @@
 
-<table id="deviceTable">
+<table id="deviceTable"  class="table">
     <tr>
         <th>Phone Number</th>
         <th>Device Name</th>
         <th>Device Description</th>
         <th>Plan</th>
+        <th>Delete</th>
+        <th>Update</th>
     </tr>
     <tr *ngFor="let device of devices">
-      <div *ngIf="device.phoneNumber != ''">
-        <td>{{ device.phoneNumber }}</td>
-        <td>{{ device.deviceName }}</td>
-        <td>{{ device.deviceDescription }}</td>
-        <td>{{ device.plan.planDescription }}</td>
-        <td><button (click)="deleteDevice(device)">Delete</button> </td>
+      <!-- <div *ngIf="device.phoneNumber != ''"> -->
+        <td *ngIf="device.phoneNumber != ''">{{ device.phoneNumber }}</td>
+        <td *ngIf="device.phoneNumber != ''">{{ device.deviceName }}</td>
+        <td *ngIf="device.phoneNumber != ''">{{ device.deviceDescription }}</td>
+        <td *ngIf="device.phoneNumber != ''">{{ device.plan.planDescription }}</td>
+        <td *ngIf="device.phoneNumber != ''"><button class="btn btn-lg btn-outline-primary" (click)="deleteDevice(device)">Delete</button> </td>
 
-        <td><button class="btn btn-lg btn-outline-primary" (click)="open(content, device)">Update</button></td>
+        <td *ngIf="device.phoneNumber != ''"><button class="btn btn-lg btn-outline-primary" (click)="open(content, device)">Update</button></td>
         <ng-template #content let-modal>
           <div class="modal-header">
             <h4 class="modal-title" id="modal-basic-title">Device Update</h4>
@@ -25,9 +27,8 @@
           <div class="modal-body">
             <form>
               <div class="form-group">
-                <div class="input-group">
-                <div class="dropdown">
-                    Data Plan:
+                <div class="input-group mb-3">
+                  <div class="dropdown">
                     <!-- <input type="drop" [(ngModel)]="device.plan.planDescription" name=device.plan.planDescription/> -->
                     <div ngbDropdown class="d-inline-block">
                       <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>{{ tempDevice.plan.planDescription }}</button>
@@ -37,15 +38,26 @@
                         <button ngbDropdownItem (click)="tempDevice.plan = planService.getPlan2()">{{ planService.getPlan2().planDescription }}</button>
                       </div>
                     </div>
+                  </div>
                 </div>
                 <div>
-                    Device Name:
-                    <input type="text" [(ngModel)]="tempDevice.deviceName" name=tempDevice.deviceName/>
+                    <!-- Device Name: -->
+                    <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">Device Name</span>
+                      </div>
+                        <input type="text" class="form-control" [(ngModel)]="tempDevice.deviceName" name=tempDevice.deviceName aria-describedby="basic-addon1"/>
+                    </div>
                 </div>
+                <br>
                 <div>
-                    Device Description:
-                    <input type="text" [(ngModel)]="tempDevice.deviceDescription" name=tempDevice.deviceDescription/>
-                </div>
+                    <!-- Device Description: -->
+                    <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">Device Description</span>
+                      </div>
+                      <input type="text" class="form-control" [(ngModel)]="tempDevice.deviceDescription" name=tempDevice.deviceDescription aria-describedby="basic-addon1"/>
+                    </div>
                 </div>
               </div>
             </form>
@@ -54,7 +66,7 @@
             <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
           </div>
         </ng-template>
-      </div>
+      <!-- </div> -->
     </tr>
 </table>
 
