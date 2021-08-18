@@ -1,10 +1,13 @@
 <div class="jumbotron container-fluid">
     <h1 class="display-3">Billing</h1>
-    <h3>Plan 1: {{ plan1 }}</h3>
+    <h3>{{ planService.getPlan().planDescription }}</h3>
+    <h3>{{ plan }}</h3>
     <h4>+</h4>
-    <h3>Plan 2: {{ plan2 }}</h3>
+    <h3>{{ planService.getPlan1().planDescription }}</h3>
+    <h3>{{ plan1 }}</h3>
     <h4>+</h4>
-    <h3>Plan 3: {{ plan3 }}</h3>
+    <h3>{{ planService.getPlan().planDescription }}</h3>
+    <h3>{{ plan2 }}</h3>
     <h4>=</h4>
     <h2>Estimated Total Bill: {{ bill }}</h2>
 
