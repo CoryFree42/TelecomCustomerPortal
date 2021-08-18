@@ -1,13 +1,16 @@
 
-<table id="deviceTable"  class="table">
-    <tr>
+<table id="deviceTable"  class="table table-striped">
+    <thead>
+      <tr>
         <th>Phone Number</th>
         <th>Device Name</th>
         <th>Device Description</th>
         <th>Plan</th>
         <th>Delete</th>
         <th>Update</th>
-    </tr>
+      </tr>
+    </thead>
+    <tbody>
     <tr *ngFor="let device of devices">
       <!-- <div *ngIf="device.phoneNumber != ''"> -->
         <td *ngIf="device.phoneNumber != ''">{{ device.phoneNumber }}</td>
@@ -20,8 +23,7 @@
         <ng-template #content let-modal>
           <div class="modal-header">
             <h4 class="modal-title" id="modal-basic-title">Device Update</h4>
-            <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-              <span aria-hidden="true">&times;</span>
+            <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')">
             </button>
           </div>
           <div class="modal-body">
@@ -68,6 +70,7 @@
         </ng-template>
       <!-- </div> -->
     </tr>
+  </tbody>
 </table>
 
 <ngb-alert *ngIf="errorMessage" type="danger" (closed)=" errorMessage = ''">{{ errorMessage }}
