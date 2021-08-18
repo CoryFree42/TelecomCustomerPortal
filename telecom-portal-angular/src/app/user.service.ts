@@ -29,4 +29,8 @@ export class UserService {
   getUserByEmailPassword(email: String, password: String): Observable<any>{
     return this.http.get(this.url + '/user/' + email + '/' + password);
   }
+
+  updateUser(user:User): Observable<any>{
+    return this.http.put(this.url + "/user/" + user.userID, user);
+  }
 }
