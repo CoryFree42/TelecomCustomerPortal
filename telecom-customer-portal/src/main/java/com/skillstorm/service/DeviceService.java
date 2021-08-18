@@ -15,29 +15,32 @@ public class DeviceService {
 	@Autowired
 	DeviceRepository repository;
 	
-	public Device saveDevice(Device device) {
+	public Integer saveDevice(Device device) {
 		if(!repository.findById(device.getPhoneNumber()).isPresent()) {
 			switch(device.getPlan().getDataPlanID()) {
 			case 1:{
 				if(repository.countDevices(device.getUser().getUserID(), device.getPlan().getDataPlanID()) < device.getPlan().getNumberOfDevices()) {
-					return repository.save(device);
+					repository.save(device);
+					return 200;
 				}else
-					return null;
+					return 401;
 			}
 			case 2:{
 				if(repository.countDevices(device.getUser().getUserID(), device.getPlan().getDataPlanID()) < device.getPlan().getNumberOfDevices()) {
-					return repository.save(device);
+					repository.save(device);
+					return 200;
 				}else
-					return null;
+					return 401;
 			}
 			case 3:{
 				if(repository.countDevices(device.getUser().getUserID(), device.getPlan().getDataPlanID()) < device.getPlan().getNumberOfDevices()) {
-					return repository.save(device);
+					repository.save(device);
+					return 200;
 				}else
-					return null;
+					return 401;
 			}
 			default:{
-				return null;
+				return 400;
 			}
 			
 			}
