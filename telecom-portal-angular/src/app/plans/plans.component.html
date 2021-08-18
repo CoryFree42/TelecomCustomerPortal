@@ -1,0 +1,14 @@
+<table id="plansTable">
+    <tr>
+        <th>Number Of Devices</th>
+        <th>Cost Per Device</th>
+        <th>Plan Description</th>
+    </tr>
+    <tr *ngFor="let plan of plans">
+      <div *ngIf="plan.dataPlanID != ''">
+        <td>{{ plan.numberOfDevices }}</td>
+        <td>{{ plan.costPerDevice }}</td>
+        <td>{{ plan.planDescription }}</td>
+      </div>
+    </tr>
+</table>

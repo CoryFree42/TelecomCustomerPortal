@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable, Subject } from 'rxjs';
 import Plan from './models/Plan';
 
 @Injectable({
@@ -36,7 +37,10 @@ export class PlanManagerService {
   getPlan2(): Plan{
     return this.plan2;
   }
-
+  
+  getAllPlans(): Observable<any>{
+    return this.http.get(this.url);
+  }
   
 
 

@@ -12,8 +12,47 @@
             <td>{{ currentUser.lastName }}</td>
             <td>{{ currentUser.email }}</td>
             <td>{{ currentUser.password }}</td>
-            <td></td>
-        </tr>
+            
+            <td><button class="btn btn-lg btn-outline-primary" (click)="open(content, currentUser)">Update</button></td>
+            <ng-template #content let-modal>
+              <div class="modal-header">
+                <h4 class="modal-title" id="modal-basic-title">User Update</h4>
+                <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form>
+                  <div class="form-group">
+                    <div class="input-group">
+                        <div>
+                            First Name:
+                            <input type="text" [(ngModel)]="tempUser.firstName" name=tempUser.firstName/>
+                        </div>
+                        <div>
+                            Last Name:
+                            <input type="text" [(ngModel)]="tempUser.lastName" name=tempUser.lastName/>
+                        </div>
+                        <div>
+                            Email:
+                            <input type="text" [(ngModel)]="tempUser.email" name=tempUser.email/>
+                        </div>
+                        <div>
+                            Password:
+                            <input type="text" [(ngModel)]="tempUser.password" name=tempUser.password/>
+                        </div>
 
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
+              </div>
+            </ng-template>
+        </tr>
     </table>
 </div>
+
+<ngb-alert *ngIf="errorMessage" type="danger" (closed)=" errorMessage = ''">{{ errorMessage }}
+</ngb-alert>
