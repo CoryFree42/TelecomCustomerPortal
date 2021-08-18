@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DeviceService } from '../device.service';
-import { observable } from 'rxjs';
+import { observable, Subject } from 'rxjs';
 import Device from '../models/Device';
 import User from '../models/User';
 import { UserManagerService } from '../user-manager.service'
@@ -17,20 +17,31 @@ export class AddDeviceComponent implements OnInit {
   service: DeviceService;
   planService: PlanManagerService;
   user: User;
+  userService:UserManagerService;
+  private _error = new Subject<string>();
+  private _success = new Subject<string>();
+  errorMessage = '';
+  successMessage = '';
   constructor(service:DeviceService, userService:UserManagerService, planService:PlanManagerService) {
     this.user = new User;
     this.service = service;
     this.planService = planService;
+    this.userService = userService;
     this.device = new Device("", "", "", userService.getUser(), planService.getPlan());
   }
 
   ngOnInit(): void {
+    this._error.subscribe(message => this.errorMessage = message);
+    this._success.subscribe(message => this.successMessage = message);
   }
 
   handleSubmit(): void{
     this.service.saveDevice(this.device).subscribe(result => {
-      console.log(result);
-    })
+      this.device = new Device("", "", "", this.userService.getUser(), this.planService.getPlan());
+      this._success.next("Successfully added device");
+      this._error.next("");
+    }, err => this._error.next("There was an error"))
+    
   }
 
 }

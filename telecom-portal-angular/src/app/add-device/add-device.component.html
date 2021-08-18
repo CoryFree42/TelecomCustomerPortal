@@ -1,4 +1,4 @@
-<form (ngSubmit)="handleSubmit()">
+<form>
     <div>
         Phone Number:
         <input type="text" [(ngModel)]="device.phoneNumber" name="device-phone-number"/>
@@ -20,6 +20,12 @@
         <input type="text" [(ngModel)]="device.deviceDescription" name="device-phone-number"/>
     </div>
     <div>
-        <input type="submit"/>
+        <button (click)="handleSubmit()">Submit</button>
     </div>
 </form>
+
+<ngb-alert *ngIf="errorMessage" type="danger" (closed)=" errorMessage = ''">{{ errorMessage }}
+</ngb-alert>
+
+<ngb-alert *ngIf="successMessage" type="success" (closed)=" successMessage = ''">{{ successMessage }}
+</ngb-alert>
