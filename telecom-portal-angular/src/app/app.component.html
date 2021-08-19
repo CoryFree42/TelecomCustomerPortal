@@ -1,14 +1,9 @@
 
-<head>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
-</head>
-<div>
+<body style="background-color: aliceblue;">
   <h1>Telecom Customer Portal</h1>
   <app-navbar></app-navbar>
   <div *ngIf="userManager.getUser().userID == 0">
       <app-login></app-login>
   </div>
   <router-outlet></router-outlet>
-</div>
-
+</body>
