@@ -7,6 +7,15 @@ CREATE TABLE users(
     PRIMARY KEY (`userID`)
 );
 -- Recommend removing userID column and just using email, but changing sql might break the code, so left alone.
+
+CREATE TABLE data_plans (
+  dataPlanID INT NOT NULL AUTO_INCREMENT,
+  numberOfDevices INT NOT NULL DEFAULT 0,
+  planDescription VARCHAR(45) NOT NULL,
+  costPerDevice DOUBLE NOT NULL,
+  PRIMARY KEY (`dataPlanID`)
+);
+
 CREATE TABLE devices (
   phoneNumber VARCHAR(45) NOT NULL,
   userID INT NOT NULL,
@@ -20,10 +29,4 @@ CREATE TABLE devices (
   references data_plans(dataPlanID)
 );
   
-CREATE TABLE data_plans (
-  dataPlanID INT NOT NULL AUTO_INCREMENT,
-  numberOfDevices INT NOT NULL DEFAULT 0,
-  planDescription VARCHAR(45) NOT NULL,
-  costPerDevice DOUBLE NOT NULL,
-  PRIMARY KEY (`dataPlanID`)
-);
+
