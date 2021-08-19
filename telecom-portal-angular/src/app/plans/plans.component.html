@@ -9,11 +9,11 @@
   <div class="row align-items-center m-5">
     <div class="col" *ngFor="let plan of plans">
       <div class="card text-center p-5" style="border-radius: 1rem;">
-        Plan: {{ plan.planDescription }}
+        <b>Plan:</b> {{ plan.planDescription }}
         <br>
-        Number of Devices: {{ plan.numberOfDevices }}
+        <b>Number of Devices:</b> {{ plan.numberOfDevices }}
         <br>
-        Cost: ${{ plan.costPerDevice }}
+        <b>Cost Per Device:</b> ${{ plan.costPerDevice }}
       </div>
     </div>
   </div>
