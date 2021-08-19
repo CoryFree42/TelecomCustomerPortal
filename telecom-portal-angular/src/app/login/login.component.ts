@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import User from '../models/User';
 import { UserService } from './../user.service';
 import { UserManagerService } from '../user-manager.service';
-
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -13,11 +13,12 @@ export class LoginComponent implements OnInit {
 
   formData: User;
   userManager: UserManagerService;
+  routerModule: Router;
 
-  constructor(private service: UserService, userManager: UserManagerService) { 
+  constructor(private service: UserService, userManager: UserManagerService, routerModule: Router) { 
     this.formData = new User();
     this.userManager = userManager;
-    console.log(this.userManager.getUser()); 
+    this.routerModule = routerModule;
   }
 
   ngOnInit(): void {
@@ -30,6 +31,7 @@ export class LoginComponent implements OnInit {
         this.formData = result;
         this.userManager.setUser(this.formData);
         alert("Successfully logged in as " + this.formData.firstName + " " + this.formData.lastName + "!");
+        this.routerModule.navigate(['/dashboard']);
       } else {
         alert("Unsuccessful log in attempt.");
       }
