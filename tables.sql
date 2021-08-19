@@ -11,7 +11,7 @@ CREATE TABLE users(
 CREATE TABLE data_plans (
   dataPlanID INT NOT NULL AUTO_INCREMENT,
   numberOfDevices INT NOT NULL DEFAULT 0,
-  planDescription VARCHAR(45) NOT NULL,
+  planDescription VARCHAR(200) NOT NULL,
   costPerDevice DOUBLE NOT NULL,
   PRIMARY KEY (`dataPlanID`)
 );
