@@ -5,5 +5,5 @@
   <div *ngIf="userManager.getUser().userID == 0">
       <app-login></app-login>
   </div>
-  <router-outlet></router-outlet>
+  <router-outlet *ngIf="userManager.getUser().userID != 0"></router-outlet>
 </body>
