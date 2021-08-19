@@ -41,12 +41,12 @@ export class AddDeviceComponent implements OnInit {
       this._success.next("Successfully added device");
       this._error.next("");
     }, err => {
-      if(err.status == 400){
+      if(err.status == 406){
         this._error.next("Phone number already tied to another device!");
       }else if(err.status == 403){
         this._error.next("Max number of devices on this plan reached!");
       }else{
-        this._error.next("There was an error");
+        this._error.next("Could not add device! Phone number possible already tied to another device!");
       }
       
     })

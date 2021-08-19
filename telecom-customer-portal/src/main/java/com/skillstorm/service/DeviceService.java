@@ -23,21 +23,21 @@ public class DeviceService {
 					repository.save(device);
 					return 200;
 				}else
-					return 401;
+					return 403;
 			}
 			case 2:{
 				if(repository.countDevices(device.getUser().getUserID(), device.getPlan().getDataPlanID()) < device.getPlan().getNumberOfDevices()) {
 					repository.save(device);
 					return 200;
 				}else
-					return 401;
+					return 403;
 			}
 			case 3:{
 				if(repository.countDevices(device.getUser().getUserID(), device.getPlan().getDataPlanID()) < device.getPlan().getNumberOfDevices()) {
 					repository.save(device);
 					return 200;
 				}else
-					return 401;
+					return 403;
 			}
 			default:{
 				return 400;

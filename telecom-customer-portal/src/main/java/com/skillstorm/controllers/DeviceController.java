@@ -31,14 +31,19 @@ public class DeviceController {
 	@PostMapping("/device")
 	public ResponseEntity<Device> save(@RequestBody @Valid Device device) {
 		                                   //Body             Entity
+		try {
 		Integer result = service.saveDevice(device);
 		if(result == 200) {
 			return new ResponseEntity<>(HttpStatus.CREATED);
-		}else if(result == 401){
+		}else if(result == 403){
 			return new ResponseEntity<>(HttpStatus.FORBIDDEN);
 		}else {
+			return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
+		}}
+		catch(Exception e){
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
+		
 	}
 	
 	@GetMapping
