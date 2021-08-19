@@ -6,6 +6,9 @@
 <div>
   <h1>Telecom Customer Portal</h1>
   <app-navbar></app-navbar>
+  <div *ngIf="userManager.getUser().userID == 0">
+      <app-login></app-login>
+  </div>
   <router-outlet></router-outlet>
 </div>
 
