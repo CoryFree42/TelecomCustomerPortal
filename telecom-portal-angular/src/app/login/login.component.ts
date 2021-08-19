@@ -3,6 +3,7 @@ import User from '../models/User';
 import { UserService } from './../user.service';
 import { UserManagerService } from '../user-manager.service';
 import { Router } from '@angular/router';
+import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-login',
@@ -14,11 +15,13 @@ export class LoginComponent implements OnInit {
   formData: User;
   userManager: UserManagerService;
   routerModule: Router;
+  modalService: NgbModal;
 
-  constructor(private service: UserService, userManager: UserManagerService, routerModule: Router) { 
+  constructor(private service: UserService, userManager: UserManagerService, routerModule: Router, modalService:NgbModal) { 
     this.formData = new User();
     this.userManager = userManager;
     this.routerModule = routerModule;
+    this.modalService = modalService;
   }
 
   ngOnInit(): void {
@@ -37,4 +40,10 @@ export class LoginComponent implements OnInit {
       }
     })
   }
+
+  open(content:any) {
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'})
+    };
+  
+
 }

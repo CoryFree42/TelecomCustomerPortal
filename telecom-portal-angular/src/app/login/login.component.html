@@ -18,9 +18,21 @@
                 <div>
                     <input class="btn btn-primary" type="submit" value="Log In" />
                 </div>
+                <br>
+                <div>
+                    <button class="btn btn-outline-primary" (click)="open(content)">Register</button>
+                </div>
             </form>
-            <br>
-            <a [routerLink]="['/new-user']">Create New User</a>
+
         </div>
     </div>
-</div>
+
+    <ng-template #content let-modal>
+        <div class="modal-header">
+            <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            </button>
+        </div>
+        <div class="modal-body">
+            <app-new-user></app-new-user>
+        </div>
+</ng-template>

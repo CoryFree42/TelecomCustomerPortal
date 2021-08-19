@@ -1,14 +1,8 @@
 <div class="container-fluid">
-    <div class="row">
-        <br>
-        <br>
-        <br>
-        <br>
     </div>
-    <div class="row">
-        <div class="col-3"></div>
-        <div class="col-6 border rounded">
-            <h2>Enter your information to create a new account:</h2>
+   
+        <div class="col-12 border rounded">
+            <h2>Register new user</h2>
             <form (ngSubmit)="handleSubmit(); userForm.reset()" class="mg-5" id="new-user" #userForm>
                 <div class="input-group mb-3">
                     <div>
@@ -42,10 +36,7 @@
                     <input class="btn btn-primary" type="submit" value="Create Account" />
                 </div>
             </form>
-            <br>
-            <a [routerLink]="['/login']">Return to Login</a>
-            <br>
+
         </div>
-    </div>
-</div>
+
 
