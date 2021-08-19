@@ -1,12 +1,12 @@
 CREATE TABLE users(
-    userID INT NOT NULL AUTO_INCREMENT, --Recommend removing this column and just using email, but changing sql might break the code, so left alone.
+    userID INT NOT NULL AUTO_INCREMENT, 
     firstName VARCHAR(45) NOT NULL,
     lastName VARCHAR(45) NOT NULL,
     email VARCHAR(45) NOT NULL UNIQUE,
     password VARCHAR(45) NOT NULL,
     PRIMARY KEY (`userID`)
 );
-
+-- Recommend removing userID column and just using email, but changing sql might break the code, so left alone.
 CREATE TABLE devices (
   phoneNumber VARCHAR(45) NOT NULL,
   userID INT NOT NULL,
