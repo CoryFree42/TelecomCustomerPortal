@@ -1,8 +1,8 @@
 CREATE TABLE users(
-    userID INT NOT NULL AUTO_INCREMENT,
+    userID INT NOT NULL AUTO_INCREMENT, --Recommend removing this column and just using email, but changing sql might break the code, so left alone.
     firstName VARCHAR(45) NOT NULL,
     lastName VARCHAR(45) NOT NULL,
-    email VARCHAR(45) NOT NULL,
+    email VARCHAR(45) NOT NULL UNIQUE,
     password VARCHAR(45) NOT NULL,
     PRIMARY KEY (`userID`)
 );
