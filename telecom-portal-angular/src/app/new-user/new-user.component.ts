@@ -22,8 +22,8 @@ export class NewUserComponent implements OnInit {
 
   handleSubmit(): void{
     this.service.saveUser(this.formData).subscribe(result => {
-      console.log(result);
-    });
+      alert("Successfully registered!")
+    }, err => alert("Sorry, we were not able to register you. Please try again."));
   }
 
 }
