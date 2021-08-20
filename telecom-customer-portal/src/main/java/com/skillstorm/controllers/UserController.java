@@ -45,13 +45,6 @@ public class UserController {
 		return new ResponseEntity<>(repository.save(user), HttpStatus.CREATED);
 	}
 	
-	//@RequestMapping(method = RequestMethod.GET, value = "/user")
-	//@ResponseBody
-	@GetMapping
-	public ResponseEntity<List<User>> findAll(){
-		return new ResponseEntity<>(repository.findAll(), HttpStatus.OK);
-	}
-	
 	//PUT localhost:9001/users/user/id  -  update at id
 	@PutMapping("/user/{id}")
 	public ResponseEntity<Void> update(@RequestBody @Valid User user, @PathVariable("id") Integer id) {
